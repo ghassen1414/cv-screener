@@ -1,12 +1,14 @@
+# models.py
 from pydantic import BaseModel
+from typing import List
 
-
-class ScreeningRequest(BaseModel):
+class ScreenRequest(BaseModel):
     job_description: str
 
-
-class ScreeningResponse(BaseModel):
-    score: int
+class ScreenResult(BaseModel):
+    match_score: int          # 0–100
+    matched_skills: List[str]
+    missing_skills: List[str]
+    recommendations: List[str]
     summary: str
-    highlights: list[str]
-    gaps: list[str]
+
